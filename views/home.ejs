@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<body>
+
+    <h1>Books</h1>
+
+    <form action="/book" method="post">
+        <input type="text" name="bookName" placeholder="Book Name" required>
+        <input type="text" name="author" placeholder="Author" required>
+        <button type="submit">UPLOAD</button>
+    </form>
+
+    <% books.forEach((book,index)=>{ %>
+        <p>BOOK NAME: <%= book.bookName %></p>
+        <p>AUTHOR: <%= book.author %></p>
+
+        <form action="/book/<%= index %>?_method=PUT" method="get">
+            <button type="submit">EDIT</button>
+        </form>
+        <form action="/book/<%= index %>?_method=DELETE" method="post">
+            <button type="submit">DELETE</button>
+        </form>
+    <% }) %>
+
+</body>
+</html>
